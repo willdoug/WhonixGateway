@@ -1,5 +1,5 @@
 #!/bin/bash
-#this is simple script to reload ip and connectio tor while yout scan target over waf.
+#this is simple script to reload ip and connection tor while yout scan target over waf.
 #it try bypass block ip...remember of set in you tool to retry request command if first time fail execution...
 
 #how to use:
