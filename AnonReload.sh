@@ -40,5 +40,3 @@ do
         sudo date --utc && sudo hwclock --utc
         sudo hwclock --utc --systohc
 done
-
-done
