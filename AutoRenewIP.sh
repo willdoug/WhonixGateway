@@ -16,19 +16,24 @@ if [ "$IP" != "200" ]; then
         echo "OFF LINE (Code:$IP)"
 
         #/usr/bin/restart-tor-gui
-        #systemcheck --verbose --cli
 
         sudo service networking restart
         sudo service tor restart
         anon-verify
+        sudo service sdwdate restart
 
-        #sudo service sdwdate restart
-        #date -u
-        #sudo date --utc && sudo hwclock --utc
-        #sudo hwclock --utc --systohc
-        #curl ident.me
+        IPnew=$(curl -o /dev/null --silent -Iw '%{http_code}' \
+            --connect-timeout 5 ident.me)
+        if [ "$IPnew" != "200" ]; then
+                /usr/bin/restart-tor-gui
+        fi
+        systemcheck --verbose --cli
+
+        date -u
+        sudo date --utc && sudo hwclock --utc
+        sudo hwclock --utc --systohc
+
 else
         echo "ON LINE (Code:$IP)"
 fi
 done
-#Keep Hacking, By @OPenTester
